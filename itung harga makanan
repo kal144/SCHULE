@@ -1,0 +1,72 @@
+import java.util.Scanner;
+import java.util.Random;
+public class Main {
+
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		Random randomz = new Random();
+		
+		System.out.println("Welcome to Bakmi eFeTe");
+		System.out.println("======================");
+		System.out.println("Please enter customer name: ");
+		String name = scanner.nextLine();
+		System.out.println("Enter food name [Bakmi Keriting | Bakmi Lebar | Kwetiau Ayam] :  ");
+		String foodname = scanner.nextLine();
+		System.out.println("Enter food price: ");
+		int price = scanner.nextInt();
+		scanner.nextLine();
+		System.out.println("Enter quantity: ");
+		int quantity = scanner.nextInt();
+		scanner.nextLine();
+		System.out.println("Choose payment method [Cash | Transfer | QRIS");
+		String payment = scanner.nextLine();
+		int point = name.length();
+		
+		if (payment.equalsIgnoreCase("cash")) {
+			point += 0;
+		
+		}
+		else if (payment.equalsIgnoreCase("transfer")) {
+			point += 5;
+			
+		}
+		else if (payment.equalsIgnoreCase("qris")) {
+			point += 10;
+			
+			
+		}
+		
+		
+		int intrandomsatu = randomz.nextInt(9);
+		int intrandomdua = randomz.nextInt(9);
+		int intrandomtiga = randomz.nextInt(9);
+		int intrandomempat = randomz.nextInt(9);
+		
+		int totaldiscount = (point)/100;
+		
+		int totalharga = (price * quantity) - (price * quantity) * (point)/100;
+		System.out.println("====================================");
+		System.out.println("\t\tBILL");
+		System.out.println("====================================");
+		System.out.println("Bill id: BI"+intrandomsatu+intrandomdua+intrandomtiga+intrandomempat);
+		System.out.println("Customer name		: "+name);
+		System.out.println("Food name			: "+foodname);
+		System.out.println("Quantity			: "+quantity);
+		System.out.println("Total discount		: "+totaldiscount);
+		System.out.println("Total price			: "+totalharga);
+		System.out.println("Payment method		: "+payment);
+		System.out.println("====================================");
+		System.out.println("Input money :");
+		int inputmoney = scanner.nextInt();
+	
+		int changes = totalharga - inputmoney;
+		System.out.println("Change : "+ changes);
+		
+		
+	
+		
+
+	}
+
+}
+
