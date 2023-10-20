@@ -1,0 +1,144 @@
+package gofood;
+import java.util.Scanner;
+
+public class Main {
+
+	public Main() {
+		Scanner scanner = new Scanner(System.in);
+		int pilihan = 0;
+		String nama;
+		String franchise;
+		String foodname;
+		String drinkname;
+		int foodprice = 0;
+		int drinkprice = 0;
+		int quantity = 0;
+		String ordernote;
+		String paymentmethod;
+		double discountpoint = 0;
+		int tax = 0;
+		int totalmin = 0;
+		int totalmax = 0;
+		
+		
+		do {
+			System.out.println("GOFOT"); 
+			System.out.println("1. Order GoFot");
+			System.out.println("2. Exit");
+			pilihan = scanner.nextInt();
+			scanner.nextLine();
+			
+			
+			if (pilihan == 1) {
+				do {
+				System.out.println("Input customer name");
+				nama = scanner.nextLine();
+				}while(nama.length() < 5 || nama.length() > 15 && !nama.startsWith("Mr.") && !nama.startsWith("Mrs."));
+		
+				do {
+					System.out.println("Input franchise name");
+					franchise = scanner.nextLine();
+					
+				}while (!franchise.equals("Fkc") && !franchise.equals("Cmd"));
+				
+				do {
+					System.out.println("Input food name");
+					foodname = scanner.nextLine();
+					if (foodname.equals("Burger")) {
+						foodprice = 17000;
+						
+					}else if (foodname.equals("Fried Chicken")) {
+						foodprice = 22000;
+					}else if (foodname.equals("French Fries")) {
+						foodprice = 12000;
+					}
+					
+				}while (!foodname.equals("Burger") && !foodname.equals("Fried Chicken") && !foodname.equals("French Fries"));
+				
+				do {
+					System.out.println("Enter drink name");
+					drinkname = scanner.nextLine();
+					if (drinkname.equals("Mineral Water")) {
+						drinkprice = 3000;
+					}else if (drinkname.equals("Ice Tea")) {
+						drinkprice = 5000;
+					}else if (drinkname.equals("Milkshake")) {
+						drinkprice = 10000;
+					}
+					
+				}while (!drinkname.equals("Mineral water") && !drinkname.equals("Ice Tea") && !drinkname.equals("Milkshake"));
+				
+				do {
+					System.out.println("input quantity [must be more than 0]");
+					quantity = scanner.nextInt();
+					scanner.nextLine();
+					
+				}while (quantity < 0);
+				
+				
+				
+				do {
+					
+					System.out.println("Input order note [must contain atleast 2 words and contain \"Thank You");
+					ordernote = scanner.nextLine();
+					
+				}while (!ordernote.endsWith("Thank You"));
+				
+				do {
+					System.out.println("Input payment method [Fana | Fopay]");
+					
+					paymentmethod = scanner.nextLine();
+					if (paymentmethod.equals("Fana")) {
+						discountpoint = 0.1;
+					}else if (paymentmethod.equals("Fopay")) {
+						discountpoint = 0.2;
+					}
+					
+				}while (!paymentmethod.equals("Fana") && !paymentmethod.equals("Fopay"));
+				
+				totalmin = (foodprice + drinkprice) * quantity;
+				tax = (int) (totalmin * discountpoint);
+				
+				totalmax = totalmin + tax;
+				
+				System.out.println(totalmin);
+				System.out.println(tax);
+				System.out.println(totalmax);
+				
+				
+				
+				
+				
+				
+			
+			
+			
+			
+			
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		}while (pilihan != 2);
+	}
+
+	public static void main(String[] args) {
+		new Main();
+
+	}
+
+}
