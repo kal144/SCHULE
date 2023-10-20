@@ -1,0 +1,259 @@
+import java.util.Scanner;
+import java.util.Random;
+public class Main {
+
+	public Main() {
+		Scanner scanner = new Scanner(System.in);
+		Random random = new Random();
+		int pilihan;
+		String nama;
+		String tipeproduk;
+		String creamtype;
+		String milktype;
+		int baseprice= 0;
+		String yesno;
+		String toptype = null;
+		String cuptype;
+		int topsizepr =  0;
+		String paymentmethod;
+		int discountpoint = 0;
+		int totaldiscount = 0;
+		int totalbefore = 0;
+		int totalafter = 0;
+		int quantity = 0;
+		int rone = random.nextInt(10); 
+		int rtwo = random.nextInt(10); 
+		int rthree = random.nextInt(10); 
+		int rfour = random.nextInt(10); 
+		int inputmoney = 0;
+		int change = 0;
+	
+		
+		do {
+			System.out.println("Welcome to Fixtue");
+			System.out.println("1. Order fixtue");
+			System.out.println("2. exit");
+			
+			pilihan = scanner.nextInt();
+			scanner.nextLine();
+			
+			if (pilihan == 1) {
+				System.out.println("Enter customer name");
+				nama = scanner.nextLine();
+				
+				do {
+					System.out.println("Enter product type");
+					tipeproduk = scanner.nextLine();
+					
+				}while (!tipeproduk.equalsIgnoreCase("Fresh ice cream") && !tipeproduk.equalsIgnoreCase("Milk tea"));
+				
+				if (tipeproduk.equalsIgnoreCase("Fresh ice cream")) {
+					do {
+						System.out.println("Enter product name [Vanilla ice cream | boba sundae | oreo sundae");
+						creamtype = scanner.nextLine();
+						
+						if (creamtype.equalsIgnoreCase("Vanilla ice cream")) {
+							baseprice = 12000;
+						}else if (creamtype.equalsIgnoreCase("Boba sundae")) {
+							baseprice = 16000;
+						}else if (creamtype.equalsIgnoreCase("oreo sundae")) {
+							baseprice = 14000;
+						}
+						
+					}while (!creamtype.equalsIgnoreCase("vanilla ice cream") && !creamtype.equalsIgnoreCase("boba sundae") && !creamtype.equalsIgnoreCase("Oreo Sundae"));
+					
+					do {
+						System.out.println("Do you want additional toppings? [YES | NO]");
+						yesno = scanner.nextLine();
+						
+						
+						
+					}while (!yesno.equalsIgnoreCase("Yes") && !yesno.equalsIgnoreCase("No"));
+					
+					if (yesno.equalsIgnoreCase("Yes")) {
+						do {
+							System.out.println("Choose topping variant [Jelly | Cookies]");
+							toptype = scanner.nextLine();
+							
+							if (toptype.equalsIgnoreCase("Jelly")) {
+								topsizepr = 2000;
+							}else if (toptype.equalsIgnoreCase("Cookies")) {
+								topsizepr = 5000;
+							}
+								
+						
+							
+						}while (!toptype.equalsIgnoreCase("Jelly") && !toptype.equalsIgnoreCase("Cookies"));
+					}else if (yesno.equalsIgnoreCase("No")) {
+							topsizepr= 0;
+					}
+					do {
+						System.out.println("Input quantity of product");
+						quantity = scanner.nextInt();
+						scanner.nextLine();
+					}while (quantity < 0);
+							
+					
+					do {
+						System.out.println("Input payment method [Transfer | QRIS]");
+						paymentmethod = scanner.nextLine();
+						
+						if (paymentmethod.equalsIgnoreCase("Transfer")) {
+							discountpoint = 5;
+						}else if (paymentmethod.equalsIgnoreCase("QRIS")) {
+							discountpoint = 10;
+						}
+						
+						
+					}while (!paymentmethod.equalsIgnoreCase("Transfer") && !paymentmethod.equalsIgnoreCase("QRIS"));
+					
+					totaldiscount = nama.length() + discountpoint;
+					totalbefore = (baseprice + topsizepr) * quantity;
+					
+					if (totalbefore > 100000) {
+						totalafter = totalbefore - (totalbefore * totaldiscount)/100;
+					}else {
+						totalafter = totalbefore;
+					}
+					System.out.println("BILL");
+					System.out.println("Bill ID : BD"+rone+rtwo+rthree+rfour);
+					System.out.println("Customer name: "+nama);
+					System.out.println("Product name: "+tipeproduk);
+					System.out.println("Ice cream name: "+creamtype);
+					System.out.println("ice cream price"+baseprice);
+					System.out.println("additional topping: "+toptype);
+					System.out.println("topping price: "+topsizepr);
+					System.out.println("quantity: "+quantity);
+					System.out.println("Payment method :"+paymentmethod);
+					System.out.println("total discount : "+totaldiscount+"%");
+					System.out.println("Total price :"+totalafter);
+					
+					
+					System.out.println("Input money [ >= total price ]");
+					inputmoney = scanner.nextInt();
+					scanner.nextLine();
+					
+					change = inputmoney - totalafter;
+					System.out.println("Your change : "+change);
+
+					System.out.println("Thank you for your purchase");
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+				}else if (tipeproduk.equalsIgnoreCase("Milk tea")) {
+					do {
+						System.out.println("Input drink name [Brown sugar | Red bean | Oats]");
+						milktype = scanner.nextLine();
+						if (milktype.equalsIgnoreCase("Brown sugar")) {
+							baseprice = 20000;
+						}else if (milktype.equalsIgnoreCase("red bean")) {
+							baseprice = 17000;
+						}else if (milktype.equalsIgnoreCase("oats")) {
+							baseprice = 15000;
+						}
+						
+					}while (!milktype.equalsIgnoreCase("brown sugar") && !milktype.equalsIgnoreCase("red bean") && !milktype.equalsIgnoreCase("oats"));
+					
+					do {
+						System.out.println("Input cup type [Small | Medium | Large]");
+						cuptype = scanner.nextLine();
+						
+						if (cuptype.equalsIgnoreCase("Small")) {
+							topsizepr = 0;
+						
+							
+						}else if (cuptype.equalsIgnoreCase("Medium")) {
+							topsizepr = 2000;
+						}else if (cuptype.equalsIgnoreCase("Large")) {
+							topsizepr = 5000;
+						}
+					}while (!cuptype.equalsIgnoreCase("Small") && !cuptype.equalsIgnoreCase("Medium") && !cuptype.equalsIgnoreCase("Large"));
+					do {
+						System.out.println("Input quantity of product");
+						quantity = scanner.nextInt();
+						scanner.nextLine();
+					}while (quantity < 0);
+					do {
+						System.out.println("Input payment method [Transfer | QRIS]");
+						paymentmethod = scanner.nextLine();
+						
+						if (paymentmethod.equalsIgnoreCase("Transfer")) {
+							discountpoint = 5;
+						}else if (paymentmethod.equalsIgnoreCase("QRIS")) {
+							discountpoint = 10;
+						}
+						
+						
+					}while (!paymentmethod.equalsIgnoreCase("Transfer") && !paymentmethod.equalsIgnoreCase("QRIS"));
+					
+					totaldiscount = nama.length() + discountpoint;
+					totalbefore = (baseprice + topsizepr) * quantity;
+					
+					if (totalbefore > 100000) {
+						totalafter = totalbefore - (totalbefore * totaldiscount)/100;
+					}else {
+						totalafter = totalbefore;
+					}
+					
+					System.out.println("BILL");
+					System.out.println("Bill ID : BD"+rone+rtwo+rthree+rfour);
+					System.out.println("Customer name: "+nama);
+					System.out.println("Product name: "+tipeproduk);
+					System.out.println("milk tea name: "+milktype);
+					System.out.println("milk tea  price"+baseprice);
+					System.out.println("cup size "+toptype);
+					System.out.println("cup size price : "+topsizepr);
+					System.out.println("quantity: "+quantity);
+					System.out.println("Payment method :"+paymentmethod);
+					System.out.println("total discount : "+totaldiscount+"%");
+					System.out.println("Total price :"+totalafter);
+					
+					System.out.println("Input money [ >= total price ]");
+					inputmoney = scanner.nextInt();
+					scanner.nextLine();
+					
+					change = inputmoney - totalafter;
+					
+					System.out.println("Your change : "+change);
+					
+					System.out.println("Thank you for your purchase");
+				}
+				
+				
+					 
+					
+	
+				
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		}while (pilihan != 2);
+		System.out.println("Terima kasih telah menggunakan aplikasi ini");
+		
+		
+		
+	}
+
+	public static void main(String[] args) {
+		new Main();
+
+	}
+
+}
