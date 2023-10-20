@@ -1,0 +1,188 @@
+import java.util.Scanner;
+public class Main {
+
+	public Main() {
+		
+		Scanner scanner = new Scanner(System.in);
+		
+		int pilihan;
+		String nim;
+		String nama;
+		int age;
+		String sex;
+		String email;
+		int gpoint = 0;
+		String faculty;
+		int fpoint = 0;
+		String paymentmethod;
+		int ppoint = 0;
+		int discountpoint = 0;
+		int registprice = 0;
+		String yesno;
+		int registpay = 0;
+		int change = 0;
+		do {
+			System.out.println("Sunib Coding Challenge");
+			System.out.println("======================");
+			System.out.println("1. Register Sunib Coding Challenge");
+			System.out.println("2. Exit");
+			pilihan = scanner.nextInt();
+			scanner.nextLine();
+			if (pilihan == 1) {
+				do {
+					System.out.println("Enter student ID");
+					nim = scanner.nextLine();
+					
+					
+				}while (!nim.startsWith("26") && !nim.startsWith("27"));
+				
+				do {
+					System.out.println("Input full name [Must be between 5-25 characters]");
+					nama = scanner.nextLine();
+					
+				}while (nama.length() < 5 || nama.length() > 25);
+				
+				do {
+					System.out.println("Input age [Must be between 17-21]");
+					age = scanner.nextInt();
+					scanner.nextLine();
+					
+				}while (age < 17 || age > 21);
+			
+				
+				do {
+					System.out.println("Enter gender [Male | Female]");
+					sex = scanner.nextLine();
+					if (sex.equals("Male")) {
+						gpoint = 10;
+						
+					}else if (sex.equals("Female")) {
+						gpoint = 20;
+					}
+					
+					
+				}while (!sex.equals("Female") && !sex.equals("Male"));
+				
+				
+				
+				do {
+					System.out.println("Enter email [Must ends with @gmail.com]");
+					email = scanner.nextLine();
+					
+				}while (!email.endsWith("@gmail.com"));
+				
+				do {
+					System.out.println("Input Department [SOCS | SOIS | SOD]");
+					faculty = scanner.nextLine();
+					if (faculty.equals("SOCS")) {
+						fpoint = 20;
+					}else if (faculty.equals("SOIS")) {
+						fpoint = 30;
+					}else if (faculty.equals("SOD")) {
+						fpoint = 25;
+					}
+					
+					
+				}while (!faculty.equals("SOCS") && !faculty.equals("SOIS") && !faculty.equals("SOD"));
+				
+				do {
+					System.out.println("Enter payment method [Cash | Transfer | QRIS]");
+					paymentmethod = scanner.nextLine();
+					
+					if (paymentmethod.equals("Cash")) {
+						ppoint = 0;
+					}else if (paymentmethod.equals("Transfer")) {
+						ppoint = 5;
+					}else if (paymentmethod.equals("QRIS")) {
+						ppoint = 10;
+					}
+					
+				}while (!paymentmethod.equals("Cash") && !paymentmethod.equals("Transfer") && !paymentmethod.equals("QRIS"));
+				
+				
+				discountpoint = fpoint + ppoint + gpoint;	
+				
+				
+				registprice = 100000 - (100000 *(discountpoint))/100;
+					
+					
+				do {
+					System.out.println("Are you sure you want to register? [Y | N] (Case Sensitive)");
+					yesno = scanner.nextLine();
+
+					if (yesno.equals("Y")) {
+						System.out.println("Student ID : "+nim);
+						System.out.println("Full name : "+nama);
+						System.out.println("Age : "+age);
+						System.out.println("Gender : "+sex);
+						System.out.println("Email : "+email);
+						System.out.println("Department : "+faculty);
+						System.out.println("Total discount : "+discountpoint+"%");
+						System.out.println("Registration price : "+registprice);
+						System.out.println("Payment method : "+paymentmethod);
+						
+						do {
+							System.out.println("Input money [ >= Registraton Price ]");
+							registpay = scanner.nextInt();
+							scanner.nextLine();
+							
+						}while (registpay < registprice );
+						
+						change = registpay - registprice;
+						
+						System.out.println("Change : "+change);
+						
+						System.out.println("Good luck for your competition :)");
+						
+						break;
+						
+						
+					}else if (yesno.equals("N")) {
+						break;
+						
+					}
+					
+					
+					
+					
+				}while (!yesno.equals("Y") && !yesno.equals("N"));
+				
+				
+					
+					
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		}while (pilihan != 2);
+		System.out.println("terima kasih telah menggunakan aplikasi ini");
+	
+		
+		
+	}
+
+	public static void main(String[] args) {
+		new Main();
+
+	}
+
+}
